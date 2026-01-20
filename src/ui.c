@@ -72,7 +72,12 @@ static void slider(float *val, float min, float max, char text[], char righttext
 
 }
 
-void ui_draw(World *world){
+static void toggle_menu(bool *menu) {
+    if (!IsKeyPressed(KEY_M)) return;
+    *menu = !(*menu);
+}
+
+void ui(World *world){
     styling();
 
     Rectangle window = {
@@ -82,10 +87,9 @@ void ui_draw(World *world){
         GetScreenHeight()
     };
     static bool windowOpen = true;
+    static bool menuActive = true;
 
-    if(!windowOpen) return;
-
-    windowOpen = !GuiWindowBox(window, "Simulation Contorls");
+    toggle_menu(&menuActive);
 
     Rectangle content = {
         window.x + 10,
@@ -93,52 +97,54 @@ void ui_draw(World *world){
         window.width - 20,
         window.height - 40
     };
-    
-    static UiPanel currentPanel = PANEL_GLOBAL;
-    static int selectedPlanet = -1;
-    if (GuiButton((Rectangle){content.x, content.y, content.width, 30}, "Global Settings")) {
-        currentPanel = PANEL_GLOBAL;
-    }
-    float y = content.y + 40;
-    for (int i = 0; i < world->planet_count; i++) {
-        if (GuiButton((Rectangle){content.x, y, content.width, 30}, world->planets[i].name)) {
-            currentPanel = PANEL_PLANET;
-            selectedPlanet = i;
+    if(menuActive) {
+        if(!windowOpen) return;
+        windowOpen = !GuiWindowBox(window, "Simulation Contorls");
+        
+        static UiPanel currentPanel = PANEL_GLOBAL;
+        static int selectedPlanet = -1;
+        if (GuiButton((Rectangle){content.x, content.y, content.width, 30}, "Global Settings")) {
+            currentPanel = PANEL_GLOBAL;
         }
-        y += 35;
-    }
-
-    if(currentPanel == PANEL_GLOBAL) {
-        slider(&world->gravity_strength, 30.0f, 100.0f, "Gravity", NULL, 3, content, false);
-        slider(&world->deltaTime, 0.0f, 2.0f, "Time Speed", NULL, 4, content, true);
-    }
-
-    world->count_g = 0;
-    world->count_ng = 0;
-
-    for (int i = 0; i < world->planet_count; i++) {
-        planet_update(&world->planets[i]); // This is visual only
-        if(world->planets[i].has_gravity == true) {
-            world->gravity_planet_indexs[world->count_g++] = i;
+        float y = content.y + 40;
+        for (int i = 0; i < world->planet_count; i++) {
+            if (GuiButton((Rectangle){content.x, y, content.width, 30}, world->planets[i].name)) {
+                currentPanel = PANEL_PLANET;
+                selectedPlanet = i;
+            }
+            y += 35;
         }
 
-        if(world->planets[i].has_gravity == false) {
-            world->non_gravity_planet_indexs[world->count_ng++] = i;
+        if(currentPanel == PANEL_GLOBAL) {
+            slider(&world->gravity_strength, 30.0f, 100.0f, "Gravity", NULL, 3, content, false);
+            slider(&world->deltaTime, 0.0f, 2.0f, "Time Speed", NULL, 4, content, true);
+        }
+
+        world->count_g = 0;
+        world->count_ng = 0;
+
+        for (int i = 0; i < world->planet_count; i++) {
+            planet_update(&world->planets[i]); // This is visual only
+            if(world->planets[i].has_gravity == true) {
+                world->gravity_planet_indexs[world->count_g++] = i;
+            }
+
+            if(world->planets[i].has_gravity == false) {
+                world->non_gravity_planet_indexs[world->count_ng++] = i;
+            }
+        }
+
+        if(currentPanel == PANEL_PLANET && selectedPlanet != -1) {
+            Planet *p = &world->planets[selectedPlanet];
+
+            float last_radius = p->radius;
+
+            slider(&p->mass, 0.0f, 10000.0f, p->name, "mass", 3, content, false);
+            slider(&p->radius, 0.0f, 1000.0f, p->name, "radius", 4, content, false);
+
+            if(last_radius != p->radius) {
+                remake_model(p);
+            }
         }
     }
-
-    if(currentPanel == PANEL_PLANET && selectedPlanet != -1) {
-        Planet *p = &world->planets[selectedPlanet];
-
-        float last_radius = p->radius;
-
-        slider(&p->mass, 0.0f, 10000.0f, p->name, "mass", 3, content, false);
-        slider(&p->radius, 0.0f, 1000.0f, p->name, "radius", 4, content, false);
-
-        if(last_radius != p->radius) {
-            remake_model(p);
-        }
-    }
-}
-void ui_update(void) {
 }

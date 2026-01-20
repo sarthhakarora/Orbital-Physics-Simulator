@@ -9,8 +9,8 @@
 
 Game game_create(void) {
     Game game = {
-        .screenWidth = 1920,
-        .screenHeight = 1080,
+        .screenWidth = 1080,
+        .screenHeight = 720,
         .game_active = true,
 
         .camera = create_camera(),
@@ -26,9 +26,9 @@ Game game_create(void) {
 
     game.camera = create_camera();
     Planet earth = planet_create("earth", "../assets/graphics/earth.jpg", 10.0f, (Vector3){200.0f, 0.0f, 0.0f}, 32, 32, 1, 0.0f, false);
-    Planet sun = planet_create("sun", "../assets/graphics/sun.jpg", 30.0f, (Vector3){0.0f, 0.0f, 0.0f}, 48, 48, 1000, 0.5f, true);
-    Planet samriddh = planet_create("samriddh", "../assets/graphics/samriddh.jpeg", 50.0f, (Vector3){-200.0f, 0.0f, 0.0f}, 48, 48, 100, 0.0f, true);
-    //game.test = planet_create("../assets/graphics/samriddh.jpeg", 10.0f, (Vector3){-30.0f, 140.0f, 0.0f}, 48, 48, 1.989e30f, 0.5f, false);
+    Planet mars = planet_create("mars", "../assets/graphics/mars.jpg", 10.0f, (Vector3){-250.0f, 0.0f, 0.0f}, 32, 32, 1, 0.0f, false);
+    Planet sun = planet_create("sun", "../assets/graphics/sun.jpg", 30.0f, (Vector3){0.0f, 200.0f, 0.0f}, 48, 48, 1000, 0.5f, true);
+    Planet jupiter = planet_create("jupiter", "../assets/graphics/jupiter.jpg", 30.0f, (Vector3){0.0f, 0.0f, 0.0f}, 48, 48, 1000, 0.5f, true);
 
     int capacity = 4;
     int count = 0;    
@@ -37,8 +37,8 @@ Game game_create(void) {
 
     planets[count++] = earth;
     planets[count++] = sun;
-    planets[count++] = samriddh;
-    //planets[count++] = test;
+    planets[count++] = jupiter;
+    planets[count++] = mars;
 
     if(count >= capacity) {
         capacity *= 2;
@@ -71,6 +71,17 @@ static void fullscreen() {
     }
 }
 
+static void pause_time(World *world) {
+    static float old_deltaTime = 0.0f;
+    if(IsKeyPressed(KEY_P) && world->deltaTime != 0) {
+        old_deltaTime = world->deltaTime;
+        world->deltaTime = 0;
+    }
+    else if(IsKeyPressed(KEY_P) && world->deltaTime == 0) {
+        world->deltaTime = old_deltaTime;
+    }
+}
+
 static void game_draw(Game *game) {
     BeginDrawing();
     BeginMode3D(game->camera.camera);
@@ -78,6 +89,7 @@ static void game_draw(Game *game) {
 
     enable_cursor(&game->camera);
     fullscreen();
+    pause_time(&game->world);
 
     world_draw(&game->world);
     world_update(&game->world);
@@ -87,11 +99,9 @@ static void game_draw(Game *game) {
 
     EndMode3D();
 
-
     DrawFPS(10, 10);
-    DrawText(GetMonitorName(0), 10, 40, 20, DARKGREEN);
 
-    ui_draw(&game->world);
+    ui(&game->world);
 
     EndDrawing();
 }
