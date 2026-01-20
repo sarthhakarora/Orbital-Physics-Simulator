@@ -98,7 +98,7 @@ void ui(World *world){
         window.height - 40
     };
     if(menuActive) {
-        if(!windowOpen) return;
+        if(!windowOpen) menuActive = false;
         windowOpen = !GuiWindowBox(window, "Simulation Contorls");
         
         static UiPanel currentPanel = PANEL_GLOBAL;
