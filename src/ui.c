@@ -7,6 +7,11 @@
 #include "world.h"
 #include "planet.h"
 
+typedef enum {
+    PANEL_GLOBAL,
+    PANEL_PLANET
+} UiPanel;
+
 static void styling() {
     // Global
     GuiSetStyle(DEFAULT, BACKGROUND_COLOR, 0x1E1E1ECC);
@@ -55,8 +60,10 @@ static void slider(float *val, float min, float max, char text[], char righttext
     if(!percentage_mode) {
         snprintf(label, sizeof(label),"%s = %.2f", text, (*val));
     }
-    char right_label[128];
-    snprintf(right_label, sizeof(right_label),"%s ", righttext);
+    char right_label[128] = "";
+    if(righttext != NULL) {
+        snprintf(right_label, sizeof(right_label),"%s ", righttext);
+    }
 
     float y = content.y + row * 60;
     
@@ -86,10 +93,25 @@ void ui_draw(World *world){
         window.width - 20,
         window.height - 40
     };
+    
+    static UiPanel currentPanel = PANEL_GLOBAL;
+    static int selectedPlanet = -1;
+    if (GuiButton((Rectangle){content.x, content.y, content.width, 30}, "Global Settings")) {
+        currentPanel = PANEL_GLOBAL;
+    }
+    float y = content.y + 40;
+    for (int i = 0; i < world->planet_count; i++) {
+        if (GuiButton((Rectangle){content.x, y, content.width, 30}, world->planets[i].name)) {
+            currentPanel = PANEL_PLANET;
+            selectedPlanet = i;
+        }
+        y += 35;
+    }
 
-
-    slider(&world->gravity_strength, 30.0f, 100.0f, "Gravity", NULL, 1, content, false);
-    slider(&world->deltaTime, 0.0f, 2.0f, "Time Speed", NULL, 2, content, true);
+    if(currentPanel == PANEL_GLOBAL) {
+        slider(&world->gravity_strength, 30.0f, 100.0f, "Gravity", NULL, 3, content, false);
+        slider(&world->deltaTime, 0.0f, 2.0f, "Time Speed", NULL, 4, content, true);
+    }
 
     world->count_g = 0;
     world->count_ng = 0;
@@ -105,19 +127,17 @@ void ui_draw(World *world){
         }
     }
 
-    for(int j = 0; j < world->count_g; j++) {
-        int g = world->gravity_planet_indexs[j];
+    if(currentPanel == PANEL_PLANET && selectedPlanet != -1) {
+        Planet *p = &world->planets[selectedPlanet];
 
-        float last_radius = world->planets[g].radius;
+        float last_radius = p->radius;
 
-        slider(&world->planets[g].mass, 0.0f, 10000.0f, world->planets[g].name, "mass", j + 3, content, false);
-        slider(&world->planets[g].radius, 0.0f, 1000.0f, world->planets[g].name, "radius", j + 4, content, false);
+        slider(&p->mass, 0.0f, 10000.0f, p->name, "mass", 3, content, false);
+        slider(&p->radius, 0.0f, 1000.0f, p->name, "radius", 4, content, false);
 
-        if(last_radius != world->planets[g].radius) {
-            remake_model(&world->planets[g]);
+        if(last_radius != p->radius) {
+            remake_model(p);
         }
-    }
-    for(int i = 0; i < world->count_ng; i++) {
     }
 }
 void ui_update(void) {

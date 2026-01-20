@@ -27,7 +27,7 @@ Game game_create(void) {
     game.camera = create_camera();
     Planet earth = planet_create("earth", "../assets/graphics/earth.jpg", 10.0f, (Vector3){200.0f, 0.0f, 0.0f}, 32, 32, 1, 0.0f, false);
     Planet sun = planet_create("sun", "../assets/graphics/sun.jpg", 30.0f, (Vector3){0.0f, 0.0f, 0.0f}, 48, 48, 1000, 0.5f, true);
-    //game.samriddh = planet_create("../assets/graphics/samriddh.jpeg", 50.0f, (Vector3){0.0f, 200.0f, 0.0f}, 48, 48, 1.989e30f, 0.5f, true);
+    Planet samriddh = planet_create("samriddh", "../assets/graphics/samriddh.jpeg", 50.0f, (Vector3){-200.0f, 0.0f, 0.0f}, 48, 48, 100, 0.0f, true);
     //game.test = planet_create("../assets/graphics/samriddh.jpeg", 10.0f, (Vector3){-30.0f, 140.0f, 0.0f}, 48, 48, 1.989e30f, 0.5f, false);
 
     int capacity = 4;
@@ -37,7 +37,7 @@ Game game_create(void) {
 
     planets[count++] = earth;
     planets[count++] = sun;
-    //planets[count++] = samriddh;
+    planets[count++] = samriddh;
     //planets[count++] = test;
 
     if(count >= capacity) {

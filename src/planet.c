@@ -37,6 +37,7 @@ Planet planet_create(char* name, char* texture_path, float radius, Vector3 posit
 }
 
 void remake_model(Planet *planet) {
+    UnloadModel(planet->model);
     Image img = LoadImage(planet->texture_path);
     UnloadImage(img);
     SetTextureWrap(planet->texture, TEXTURE_WRAP_CLAMP);
