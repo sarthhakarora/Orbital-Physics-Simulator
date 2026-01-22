@@ -1,10 +1,12 @@
 #include "raylib.h"
 #include "raymath.h"
+#include "stdlib.h"
+
 #include "game.h"
+#include "skybox.h"
 #include "planet.h"
 #include "world.h"
 #include "camera.h"
-#include "stdlib.h"
 #include "ui.h"
 
 Game game_create(void) {
@@ -14,6 +16,7 @@ Game game_create(void) {
         .game_active = true,
 
         .camera = create_camera(),
+        .skybox = create_skybox(),
    };
 
     SetConfigFlags(FLAG_MSAA_4X_HINT);
@@ -91,11 +94,13 @@ static void game_draw(Game *game) {
     fullscreen();
     pause_time(&game->world);
 
-    world_draw(&game->world);
-    world_update(&game->world);
-
     DrawGrid(1000, 2.0f);
     update_camera(&game->camera);
+
+    draw_skybox(&game->skybox, game->camera.camera);
+
+    world_draw(&game->world);
+    world_update(&game->world);
 
     EndMode3D();
 

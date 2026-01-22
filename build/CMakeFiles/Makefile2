@@ -85,12 +85,12 @@ clean: CMakeFiles/run.dir/clean
 CMakeFiles/orbitalPhysics.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\orbitalPhysics.dir\build.make CMakeFiles/orbitalPhysics.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\orbitalPhysics.dir\build.make CMakeFiles/orbitalPhysics.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\dev\OrbitalPhysicsSimulator\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target orbitalPhysics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\dev\OrbitalPhysicsSimulator\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target orbitalPhysics"
 .PHONY : CMakeFiles/orbitalPhysics.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/orbitalPhysics.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\dev\OrbitalPhysicsSimulator\build\CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\dev\OrbitalPhysicsSimulator\build\CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/orbitalPhysics.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\dev\OrbitalPhysicsSimulator\build\CMakeFiles 0
 .PHONY : CMakeFiles/orbitalPhysics.dir/rule
@@ -102,7 +102,7 @@ orbitalPhysics: CMakeFiles/orbitalPhysics.dir/rule
 # codegen rule for target.
 CMakeFiles/orbitalPhysics.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\orbitalPhysics.dir\build.make CMakeFiles/orbitalPhysics.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\dev\OrbitalPhysicsSimulator\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target orbitalPhysics"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\dev\OrbitalPhysicsSimulator\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Finished codegen for target orbitalPhysics"
 .PHONY : CMakeFiles/orbitalPhysics.dir/codegen
 
 # clean rule for target.
@@ -122,7 +122,7 @@ CMakeFiles/run.dir/all: CMakeFiles/orbitalPhysics.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/run.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\dev\OrbitalPhysicsSimulator\build\CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\dev\OrbitalPhysicsSimulator\build\CMakeFiles 9
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/run.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\dev\OrbitalPhysicsSimulator\build\CMakeFiles 0
 .PHONY : CMakeFiles/run.dir/rule

@@ -45,6 +45,7 @@ CMakeFiles/orbitalPhysics.dir/src/game.c.obj: C:/dev/OrbitalPhysicsSimulator/src
   C:/dev/OrbitalPhysicsSimulator/src/camera.h \
   C:/dev/OrbitalPhysicsSimulator/src/game.h \
   C:/dev/OrbitalPhysicsSimulator/src/planet.h \
+  C:/dev/OrbitalPhysicsSimulator/src/skybox.h \
   C:/dev/OrbitalPhysicsSimulator/src/ui.h \
   C:/dev/OrbitalPhysicsSimulator/src/world.h
 
@@ -68,6 +69,7 @@ CMakeFiles/orbitalPhysics.dir/src/main.c.obj: C:/dev/OrbitalPhysicsSimulator/src
   C:/dev/OrbitalPhysicsSimulator/src/camera.h \
   C:/dev/OrbitalPhysicsSimulator/src/game.h \
   C:/dev/OrbitalPhysicsSimulator/src/planet.h \
+  C:/dev/OrbitalPhysicsSimulator/src/skybox.h \
   C:/dev/OrbitalPhysicsSimulator/src/world.h
 
 CMakeFiles/orbitalPhysics.dir/src/planet.c.obj: C:/dev/OrbitalPhysicsSimulator/src/planet.c \
@@ -91,6 +93,24 @@ CMakeFiles/orbitalPhysics.dir/src/planet.c.obj: C:/dev/OrbitalPhysicsSimulator/s
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
   C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdbool.h \
   C:/dev/OrbitalPhysicsSimulator/src/planet.h
+
+CMakeFiles/orbitalPhysics.dir/src/skybox.c.obj: C:/dev/OrbitalPhysicsSimulator/src/skybox.c \
+  C:/dev/OrbitalPhysicsSimulator/include/raylib.h \
+  C:/dev/OrbitalPhysicsSimulator/include/raymath.h \
+  C:/dev/OrbitalPhysicsSimulator/include/rlgl.h \
+  C:/msys64/mingw64/include/_mingw.h \
+  C:/msys64/mingw64/include/_mingw_mac.h \
+  C:/msys64/mingw64/include/_mingw_secapi.h \
+  C:/msys64/mingw64/include/_mingw_stdarg.h \
+  C:/msys64/mingw64/include/corecrt.h \
+  C:/msys64/mingw64/include/crtdefs.h \
+  C:/msys64/mingw64/include/math.h \
+  C:/msys64/mingw64/include/sdks/_mingw_ddk.h \
+  C:/msys64/mingw64/include/stdarg.h \
+  C:/msys64/mingw64/include/vadefs.h \
+  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
+  C:/msys64/mingw64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdbool.h \
+  C:/dev/OrbitalPhysicsSimulator/src/skybox.h
 
 CMakeFiles/orbitalPhysics.dir/src/timer.c.obj: C:/dev/OrbitalPhysicsSimulator/src/timer.c \
   C:/dev/OrbitalPhysicsSimulator/include/raylib.h \
@@ -176,6 +196,8 @@ C:/msys64/mingw64/include/_mingw_secapi.h:
 
 C:/dev/OrbitalPhysicsSimulator/src/ui.h:
 
+C:/dev/OrbitalPhysicsSimulator/src/skybox.h:
+
 C:/dev/OrbitalPhysicsSimulator/src/game.h:
 
 C:/msys64/mingw64/include/_mingw.h:
@@ -210,6 +232,8 @@ C:/msys64/mingw64/include/corecrt_wctype.h:
 
 C:/msys64/mingw64/include/vadefs.h:
 
+C:/dev/OrbitalPhysicsSimulator/include/rlgl.h:
+
 C:/msys64/mingw64/include/swprintf.inl:
 
 C:/msys64/mingw64/include/stdlib.h:
@@ -227,6 +251,8 @@ C:/msys64/mingw64/include/corecrt_wstdlib.h:
 C:/dev/OrbitalPhysicsSimulator/src/camera.h:
 
 C:/dev/OrbitalPhysicsSimulator/src/ui.c:
+
+C:/dev/OrbitalPhysicsSimulator/src/skybox.c:
 
 C:/dev/OrbitalPhysicsSimulator/src/game.c:
 

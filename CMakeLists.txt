@@ -15,6 +15,7 @@ add_executable(orbitalPhysics
     src/camera.c
     src/planet.c
     src/world.c
+    src/skybox.c
     src/ui.c
 
 )

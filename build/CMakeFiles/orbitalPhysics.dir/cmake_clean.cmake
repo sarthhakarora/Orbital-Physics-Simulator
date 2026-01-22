@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/orbitalPhysics.dir/src/main.c.obj.d"
   "CMakeFiles/orbitalPhysics.dir/src/planet.c.obj"
   "CMakeFiles/orbitalPhysics.dir/src/planet.c.obj.d"
+  "CMakeFiles/orbitalPhysics.dir/src/skybox.c.obj"
+  "CMakeFiles/orbitalPhysics.dir/src/skybox.c.obj.d"
   "CMakeFiles/orbitalPhysics.dir/src/timer.c.obj"
   "CMakeFiles/orbitalPhysics.dir/src/timer.c.obj.d"
   "CMakeFiles/orbitalPhysics.dir/src/ui.c.obj"

@@ -237,6 +237,30 @@ src/planet.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\orbitalPhysics.dir\build.make CMakeFiles/orbitalPhysics.dir/src/planet.c.s
 .PHONY : src/planet.c.s
 
+src/skybox.obj: src/skybox.c.obj
+.PHONY : src/skybox.obj
+
+# target to build an object file
+src/skybox.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\orbitalPhysics.dir\build.make CMakeFiles/orbitalPhysics.dir/src/skybox.c.obj
+.PHONY : src/skybox.c.obj
+
+src/skybox.i: src/skybox.c.i
+.PHONY : src/skybox.i
+
+# target to preprocess a source file
+src/skybox.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\orbitalPhysics.dir\build.make CMakeFiles/orbitalPhysics.dir/src/skybox.c.i
+.PHONY : src/skybox.c.i
+
+src/skybox.s: src/skybox.c.s
+.PHONY : src/skybox.s
+
+# target to generate assembly for a file
+src/skybox.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\orbitalPhysics.dir\build.make CMakeFiles/orbitalPhysics.dir/src/skybox.c.s
+.PHONY : src/skybox.c.s
+
 src/timer.obj: src/timer.c.obj
 .PHONY : src/timer.obj
 
@@ -331,6 +355,9 @@ help:
 	@echo ... src/planet.obj
 	@echo ... src/planet.i
 	@echo ... src/planet.s
+	@echo ... src/skybox.obj
+	@echo ... src/skybox.i
+	@echo ... src/skybox.s
 	@echo ... src/timer.obj
 	@echo ... src/timer.i
 	@echo ... src/timer.s

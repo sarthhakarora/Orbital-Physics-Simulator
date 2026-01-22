@@ -18,4 +18,5 @@ CMakeFiles/orbitalPhysics.dir/src/main.c.obj: \
  C:\dev\OrbitalPhysicsSimulator\src\game.h \
  C:\dev\OrbitalPhysicsSimulator\src\camera.h \
  C:\dev\OrbitalPhysicsSimulator\src\world.h \
- C:\dev\OrbitalPhysicsSimulator\src\planet.h
+ C:\dev\OrbitalPhysicsSimulator\src\planet.h \
+ C:\dev\OrbitalPhysicsSimulator\src\skybox.h
